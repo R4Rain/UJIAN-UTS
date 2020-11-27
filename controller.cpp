@@ -37,32 +37,32 @@ void pushPatient(int date, char *month, int year, char *name){
                  {
                     if(date < curr->birthDate)
                     {
-                    	curr = curr->next;
                         break;
                     }
                     else if(date >= curr->birthDate)
                     {
+                    	curr = curr->next;
                         break;
                     }
                  }
                  else if(current < inserted)
                  {
-                 	curr = curr->next;
                         break;
                  }
                  else if(current > inserted)
                  {
+                 	    curr = curr->next;
                         break;
                  }
-             }else if(year > curr->birthYear){
+             }else if(year < curr->birthYear){
              	break;
 			 }
              curr = curr->next;
        }
-       curr->prev->prev->next = temp;
+       curr->prev->next = temp;
+       temp->prev = curr->prev;
        curr->prev = temp;
        temp->next = curr;
-       temp->prev = curr->prev->prev;
    }
 }
 
